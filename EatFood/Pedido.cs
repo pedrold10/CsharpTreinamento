@@ -16,10 +16,19 @@ namespace EatFood{
                 );
             }
         public string pedido(){
+            
+            DateTime dt = new DateTime(2022, 4, 26);
+            int itensDoPedido = 0;
             string pedidos = "";
             double subtotal = 0;
             foreach(Prato prato in Pedidos){
-                subtotal+=prato.preco;
+                if(dt.DayOfWeek==DayOfWeek.Tuesday){
+                    if(itensDoPedido==2)
+                        subtotal+=prato.preco/2;
+                    else 
+                        subtotal+=prato.preco;
+                }
+                itensDoPedido+=1;
                 pedidos += $"Prato: {prato.nome}\nPreço: R${prato.preco} \n-------------\n";
             }
             return $"{pedidos}\nSubtotal: R${subtotal}";
@@ -32,7 +41,7 @@ namespace EatFood{
                 foreach(Prato prato in cardapio.Pratos){
                         if (codigo_int==prato.codigo){
                             this.addPrato(cardapio.getPrato(prato));
-                            System.Diagnostics.Process.Start(prato.foto);
+                            
                         }
                         else if(codigo_int>cardapio.Pratos.Count)
                             saida = $"Número {codigo_int} Inválido";
