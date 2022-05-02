@@ -11,7 +11,6 @@ namespace EatFood{
             Prato hotdog = new Prato("Hot-Dog", hotdog_imagem, 2, "Pão, salsicha, batata-palha", 10.5);
             cardapio.addPrato(pizza);
             cardapio.addPrato(hotdog);
-
             Console.WriteLine(cardapio.menu());
             Pedido pedido = new Pedido();
             string codigo = "";
