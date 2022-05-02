@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
+
 
 namespace EatFood{
     public class Pedido{
@@ -38,15 +41,22 @@ namespace EatFood{
             int codigo_int = Convert.ToInt32(codigo);
             if(codigo_int!=0){
                 string saida = "";
-                foreach(Prato prato in cardapio.Pratos){
-                        if (codigo_int==prato.codigo){
-                            this.addPrato(cardapio.getPrato(prato));
+                //foreach(Prato prato in cardapio.Pratos){
+
+                        //if (codigo_int==prato.codigo){
+                var pratos = cardapio.Pratos
+                .Where(b => b.codigo == codigo_int)
+                .OrderBy(b => b.preco)
+                .ToList();
+                this.addPrato(pratos[0]);
+                
+                //Pedidos.addPrato(cardapio.getPrato(prato));
                             
-                        }
-                        else if(codigo_int>cardapio.Pratos.Count)
-                            saida = $"Número {codigo_int} Inválido";
-                }
-                Console.WriteLine(saida);
+                        //}
+                        //else if(codigo_int>cardapio.Pratos.Count)
+                //saida = $"Número {codigo_int} Inválido";
+                //}
+                //Console.WriteLine(pratos);
             }
             else 
                 Console.WriteLine(this.pedido());

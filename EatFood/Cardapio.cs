@@ -14,9 +14,8 @@ namespace EatFood{
         public string menu(){
             string pratos = "";
             foreach (Prato prato in Pratos)
-            {
                 pratos += $"\n==============================\nCódigo: {prato.codigo} \nNome: {prato.nome}\nComposição: {prato.composicao}\nPreço: R${prato.preco}\n{prato.foto}\n";
-            }
+            
             return pratos;
         }
         
