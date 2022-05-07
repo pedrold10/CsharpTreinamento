@@ -45,7 +45,6 @@ namespace EatFood{
                 .OrderBy(b => b.preco)
                 .ToList();
                 this.addPrato(pratos[0]);
-                
             }
             else 
                 Console.WriteLine(this.pedido());
