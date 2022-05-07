@@ -3,13 +3,19 @@ namespace Aleatorio{
         public RepositorioDeCarros(){
             Carros = new List<Carro>();
         }
+        
+        private Contexto _contexto;
+
         public List<Carro> Carros { get; set; }
         public void Adicionar(Carro carro){
-            Carros.Add(carro);
+            _contexto.Carros.Add(carro);
         }
         public Carro Find(string chassi){
-            return Carros
+            return _contexto.Carros
                    .FirstOrDefault(x=> x.Chassi == chassi);
+        }
+        public void Persistir(){
+            _contexto.Carros.Add();
         }
     }
 }
